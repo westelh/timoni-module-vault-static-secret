@@ -43,10 +43,6 @@ import (
 
 	// auth
 	auth: vaultauthv1beta1.#VaultAuthSpec
-	auth: vaultConnectionRef: metadata.name
-	if createSA {
-		auth: kubernetes: serviceAccount:	metadata.name
-	}
 
 	// secret
 	secret: vaultstaticsecretv1beta1.#VaultStaticSecretSpec
