@@ -6,7 +6,7 @@ import (
 
 #StaticSecret: vaultstaticsecretv1beta1.#VaultStaticSecret & {
 	#config: #Config
-	#va: #VaultAuth
+	#va:     #VaultAuth
 
 	metadata: #config.metadata
 	spec: #config.secret & {

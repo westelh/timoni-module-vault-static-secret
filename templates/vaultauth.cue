@@ -5,8 +5,8 @@ import (
 )
 
 #VaultAuth: vaultauthv1beta1.#VaultAuth & {
-	#config:  #Config
-	#vc: #VaultConnection
+	#config: #Config
+	#vc:     #VaultConnection
 
 	metadata: #config.metadata
 	spec: #config.auth & {

@@ -32,7 +32,7 @@ import (
 	// The annotations allows adding `metadata.annotations` to all resources.
 	metadata: annotations?: timoniv1.#Annotations
 
-	address: string
+	address:             string
 	skipTLSVerify:       *false | bool
 	tlsServerName?:      string
 	tlsCaCertSecretRef?: string
@@ -55,12 +55,12 @@ import (
 
 		va: #VaultAuth & {
 			#config: config
-			#vc: vc
+			#vc:     vc
 		}
 
 		sec: #StaticSecret & {
 			#config: config
-			#va: va
+			#va:     va
 		}
 	}
 }
