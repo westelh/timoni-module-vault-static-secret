@@ -32,8 +32,6 @@ import (
 	// The annotations allows adding `metadata.annotations` to all resources.
 	metadata: annotations?: timoniv1.#Annotations
 
-	createSA: *true | bool
-
 	address: string
 	skipTLSVerify:       *false | bool
 	tlsServerName?:      string
@@ -54,10 +52,10 @@ import (
 
 	objects: {
 		vc: #VaultConnection & {#config: config}
-		va: #VaultAuth & {#config: config}
 
-		if config.createSA {
-			sa: #ServiceAccount & {#config: config}
+		va: #VaultAuth & {
+			#config: config
+			#vc: vc
 		}
 
 		sec: #StaticSecret & {
