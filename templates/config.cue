@@ -2,6 +2,7 @@ package templates
 
 import (
 	timoniv1 "timoni.sh/core/v1alpha1"
+	vaultstaticsecretv1beta1 "secrets.hashicorp.com/vaultstaticsecret/v1beta1"
 	vaultauthv1beta1 "secrets.hashicorp.com/vaultauth/v1beta1"
 )
 
@@ -34,16 +35,21 @@ import (
 	createSA: *true | bool
 
 	address: string
-	mount: *"kubernetes" | string
 	skipTLSVerify:       *false | bool
 	tlsServerName?:      string
 	tlsCaCertSecretRef?: string
 
+	authMount: *"kubernetes" | string
+
+	// auth
 	auth: vaultauthv1beta1.#VaultAuthSpec
 	auth: vaultConnectionRef: metadata.name
 	if createSA {
 		auth: kubernetes: serviceAccount:	metadata.name
 	}
+
+	// secret
+	secret: vaultstaticsecretv1beta1.#VaultStaticSecretSpec
 }
 
 // Instance takes the config values and outputs the Kubernetes objects.
@@ -56,6 +62,11 @@ import (
 
 		if config.createSA {
 			sa: #ServiceAccount & {#config: config}
+		}
+
+		sec: #StaticSecret & {
+			#config: config
+			#va: va
 		}
 	}
 }

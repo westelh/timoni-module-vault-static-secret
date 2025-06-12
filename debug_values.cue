@@ -10,4 +10,12 @@ values: {
 		method: "kubernetes"
 		mount: "kubernetes"
 	}
+	secret: {
+		destination: {
+			name: "test-secret"
+		}
+		path: "app/secret"
+		type: "kv-v2"
+		mount: "kv"
+	}
 }
