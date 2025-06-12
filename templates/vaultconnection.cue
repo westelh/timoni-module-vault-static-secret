@@ -9,8 +9,6 @@ import (
 	metadata: #config.metadata
 	spec: {
 		address: #config.address
-		headers: #config.headers
-
 		skipTLSVerify: #config.skipTLSVerify
 		if #config.tlsServerName != _|_ {
 			tlsServerName: #config.tlsServerName

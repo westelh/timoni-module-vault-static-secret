@@ -35,8 +35,6 @@ import (
 
 	address: string
 	mount: *"kubernetes" | string
-	role: string
-	headers: *{} | {[_]:string}
 	skipTLSVerify:       *false | bool
 	tlsServerName?:      string
 	tlsCaCertSecretRef?: string
